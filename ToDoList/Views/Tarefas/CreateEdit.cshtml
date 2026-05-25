@@ -1,0 +1,49 @@
+﻿@using ToDoList.Models.Enums;
+
+@model TarefasModel
+
+<h2>
+    @(Model?.Id > 0 ? "Editar Tarefa" : "Nova Tarefa")
+</h2>
+
+<form method="post"
+      asp-action="@(Model?.Id > 0 ? "Edit" : "Create")"
+      asp-route-id="@Model?.Id">
+
+    <div class="mb-3">
+        <label>Nome</label>
+        <input asp-for="Nome" class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Descrição</label>
+        <textarea asp-for="Descricao"
+                  class="form-control"></textarea>
+        <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Prazo</label>
+        <input type="datetime-local" asp-for="Prazo" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Prioridade">Prioridade</label>
+        <select asp-for="Prioridade"
+                asp-items="Html.GetEnumSelectList<PrioridadeEnum>()"
+                class="form-control">
+            <option value="">Selecione uma opção</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Concluído</label>
+        <input type="checkbox" asp-for="Status" class="" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Salvar
+    </button>
+
+</form>

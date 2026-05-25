@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - ToDoList</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ToDoList.styles.css" asp-append-version="true" />
+
+    <style>
+        body {
+            background-color: #f4f7fb;
+            font-family: 'Segoe UI', sans-serif;
+            color: #1f2937;
+        }
+
+        .navbar-custom {
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+            padding: 14px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+            .nav-link:hover {
+                color: white !important;
+                transform: translateY(-1px);
+            }
+
+        .content-wrapper {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .page-container {
+            background: white;
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            min-height: 75vh;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .todo-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .todo-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: white;
+            color: #2563eb;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+            <div class="container">
+
+                <a class="navbar-brand todo-logo"
+                   asp-area=""
+                   asp-controller="Tarefas"
+                   asp-action="Index">
+
+                    <div class="todo-logo-icon">
+                        ✓
+                    </div>
+
+                    <span>ToDoList</span>
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarContent">
+
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+
+                    <ul class="navbar-nav ms-auto gap-2">
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Tarefas"
+                               asp-action="Index">
+                                📋 Tarefas
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Tarefas"
+                               asp-action="Create">
+                                ➕ Nova Tarefa
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container content-wrapper">
+
+        <main role="main" class="page-container">
+            @RenderBody()
+        </main>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            © 2026 - ToDoList | Organize suas tarefas com praticidade
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
