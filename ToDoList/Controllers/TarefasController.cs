@@ -25,7 +25,9 @@ namespace ToDoList.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View("CreateEdit");
+            var novaTarefa = new TarefasModel();
+
+            return View("CreateEdit", novaTarefa);
         }
 
         [HttpPost]

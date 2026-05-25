@@ -25,7 +25,8 @@
 
     <div class="mb-3">
         <label>Prazo</label>
-        <input type="datetime-local" asp-for="Prazo" class="form-control"/>
+        <input type="datetime-local" asp-for="Prazo" class="form-control" value="@Model?.Prazo.ToString("yyyy-MM-ddTHH:mm")" />
+        <span asp-validation-for="Prazo" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
@@ -35,6 +36,7 @@
                 class="form-control">
             <option value="">Selecione uma opção</option>
         </select>
+        <span asp-validation-for="Prioridade" class="text-danger"></span>
     </div>
 
     <div class="mb-3">

@@ -16,8 +16,10 @@ namespace ToDoList.Models
         [Required(ErrorMessage = "A descrição da tarefa é obrigatória.")]
         public string Descricao { get; set; } = string.Empty;
 
-        public DateTime Prazo {  get; set; } = DateTime.MinValue;
-        public PrioridadeEnum Prioridade { get; set; }
+        public DateTime Prazo {  get; set; } = DateTime.Now;
+
+        [Required(ErrorMessage = "Escolha um nivel de prioridade.")]
+        public PrioridadeEnum? Prioridade { get; set; }
         public bool Status {  get; set; }
     }
 }
